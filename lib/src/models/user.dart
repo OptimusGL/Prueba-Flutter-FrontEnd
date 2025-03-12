@@ -18,13 +18,13 @@ class User {
   List<Rol>? roles = [];
 
   User({
-    required this.id,
-    required this.email,
-    required this.name,
-    required this.lastname,
-    required this.phone,
-    required this.image,
-    required this.password,
+    this.id,
+    this.email,
+    this.name,
+    this.lastname,
+    this.phone,
+    this.image,
+    this.password,
     this.sessionToken,
     this.roles
   });
@@ -50,6 +50,6 @@ class User {
     "image": image,
     "password": password,
     "session_token": sessionToken,
-    "roles": roles
+    'roles': roles
   };
 }

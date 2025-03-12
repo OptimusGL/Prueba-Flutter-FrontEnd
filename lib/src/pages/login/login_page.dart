@@ -9,7 +9,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 50,
         child: _textDontHaveAccount(),
       ),
@@ -56,7 +56,7 @@ class LoginPage extends StatelessWidget {
           .of(context)
           .size
           .height * 0.45,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.33, left: 50, right: 50),
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.35, left: 50, right: 50),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: <BoxShadow>[
@@ -176,12 +176,12 @@ class LoginPage extends StatelessWidget {
   Widget _imageCover() {
     return SafeArea(
       child: Container(
-        margin: EdgeInsets.only(top: 20, bottom: 15),
+        margin: EdgeInsets.only(top: 50, bottom: 15),
         alignment: Alignment.center,
         child: Image.asset(
           'assets/img/delivery.png',
-          width: 130,
-          height: 130,
+          width: 200,
+          height: 157,
         ),
       ),
     );

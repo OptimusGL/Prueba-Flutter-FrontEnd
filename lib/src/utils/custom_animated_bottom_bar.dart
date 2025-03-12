@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CustomAnimatedBottomBar extends StatelessWidget {
 
@@ -7,7 +6,7 @@ class CustomAnimatedBottomBar extends StatelessWidget {
     Key? key,
     this.selectedIndex = 0,
     this.showElevation = true,
-    this.iconSize = 24,
+    this.iconSize = 25,
     this.backgroundColor,
     this.itemCornerRadius = 50,
     this.containerHeight = 56,
@@ -33,12 +32,12 @@ class CustomAnimatedBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = backgroundColor ?? Theme.of(context).bottomAppBarTheme;
+    final bgColor = backgroundColor ?? Theme.of(context).bottomAppBarColor;
 
     return Container(
       margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: bgColor,
         borderRadius: BorderRadius.circular(50),
         boxShadow: [
           if (showElevation)
@@ -52,7 +51,7 @@ class CustomAnimatedBottomBar extends StatelessWidget {
         child: Container(
           width: double.infinity,
           height: containerHeight,
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
           child: Row(
             mainAxisAlignment: mainAxisAlignment,
             children: items.map((item) {
@@ -63,7 +62,7 @@ class CustomAnimatedBottomBar extends StatelessWidget {
                   item: item,
                   iconSize: iconSize,
                   isSelected: index == selectedIndex,
-                  backgroundColor: Colors.orange,
+                  backgroundColor: bgColor,
                   itemCornerRadius: itemCornerRadius,
                   animationDuration: animationDuration,
                   curve: curve,
@@ -75,6 +74,10 @@ class CustomAnimatedBottomBar extends StatelessWidget {
       ),
     );
   }
+}
+
+extension on ThemeData {
+  get bottomAppBarColor => null;
 }
 
 class _ItemWidget extends StatelessWidget {
@@ -109,7 +112,7 @@ class _ItemWidget extends StatelessWidget {
         curve: curve,
         decoration: BoxDecoration(
           color:
-          isSelected ? item.activeColor.withOpacity(0.2) : backgroundColor,
+          isSelected ? item.activeColor.withValues(alpha: 0.2) : backgroundColor,
           borderRadius: BorderRadius.circular(itemCornerRadius),
         ),
         child: SingleChildScrollView(
@@ -127,7 +130,7 @@ class _ItemWidget extends StatelessWidget {
                   data: IconThemeData(
                     size: iconSize,
                     color: isSelected
-                        ? item.activeColor.withOpacity(1)
+                        ? item.activeColor.withValues(green: 1)
                         : item.inactiveColor == null
                         ? item.activeColor
                         : item.inactiveColor,

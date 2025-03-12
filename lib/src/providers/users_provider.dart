@@ -9,7 +9,8 @@ import 'package:http/http.dart' as http;
 
 class UsersProvider extends GetConnect {
 
-  String url = Environment.API_URL + 'api/users';
+  String url = '${Environment.API_URL}api/users';
+  /*String url = Environment.API_URL + 'api/users';*/
 
   Future<Response> create(User user) async {
     Response response = await post(
@@ -23,8 +24,38 @@ class UsersProvider extends GetConnect {
     return response;
   }
 
+  /*Future<void> createUserWithImage() async {
+    final url = Uri.parse('http://192.168.1.69:3007/api/users/createWithImage');
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'id': '',
+          'email': 'jc.cuellar.ruz@gmail.com',
+          'name': 'Juan Carlos',
+          'lastname': 'Cuéllar',
+          'phone': '5635555255',
+          'image': 'https://firebasestorage.googleapis.com/v0/b/flutter-test-4d743.firebasestorage.app/o/Paye2.jpg?alt=media&token=21bdcbb4-5cf8-4aa1-a0bd-8c12dda45c32',
+          'password': 'pass12345',
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        print('Usuario creado exitosamente');
+      } else {
+        print('Error al crear el usuario: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+  }*/
+
   Future<Stream> createWithImage(User user, File image) async {
     Uri uri = Uri.http(Environment.API_URL_OLD, '/api/users/createWithImage');
+    /*Uri uri = Uri.parse('http://192.168.1.69:3007/api/users/createWithImage');*/
+
     final request = http.MultipartRequest('POST', uri);
     request.files.add(http.MultipartFile(
       'image',

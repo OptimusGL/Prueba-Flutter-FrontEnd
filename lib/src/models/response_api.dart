@@ -11,8 +11,8 @@ class ResponseApi {
   dynamic data;
 
   ResponseApi({
-    required this.success,
-    required this.message,
+    this.success,
+    this.message,
     this.data
   });
 

@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sn_progress_dialog/progress_dialog.dart';
 import 'package:prueba_tecnica_flutter/src/models/response_api.dart';
 import 'package:prueba_tecnica_flutter/src/models/user.dart';
 import 'package:prueba_tecnica_flutter/src/providers/users_provider.dart';
-import 'package:sn_progress_dialog/progress_dialog.dart';
 
 class RegisterController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -41,12 +41,12 @@ class RegisterController extends GetxController {
 
       User user = User(
         id: '',
-          email: email,
-          name: name,
-          lastname: lastname,
-          phone: phone,
-          image: '',
-          password: password,
+        email: email,
+        name: name,
+        lastname: lastname,
+        phone: phone,
+        image: '',
+        password: password,
       );
 
       Stream stream = await usersProvider.createWithImage(user, imageFile!);
